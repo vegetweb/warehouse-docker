@@ -1,0 +1,44 @@
+<?php
+/**
+ * Indicia, the OPAL Online Recording Toolkit.
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see http://www.gnu.org/licenses/gpl.html.
+ *
+ * @package	Modules
+ * @subpackage Spatial index builder
+ * @author	Indicia Team
+ * @license	http://www.gnu.org/licenses/gpl.html GPL
+ * @link 	http://code.google.com/p/indicia/
+ */
+
+// List the location type terms that area available for indexing against. Typically these will need to be those
+// which are frequently reported against especially where the boundaries are large and/or complex.
+$config['location_types']=array(
+  'Vice County',
+  'Local wildlife site'
+);
+
+// If any of the indexed location types only need indexing for certain surveys then that can be configured here.
+// Omit this configuration if not required.
+$config['survey_restrictions']=array(
+  'Local wildlife site' => array(25, 26, 27) // only build an index for surveys 25, 26 and 27 for local wildlife sites
+);
+
+// Any site types that should be only linked once per sample (i.e. non-overlapping boundaries) can be specified here.
+// This adds a foreign key for the location_id directly to cache_occurrences_functional and cache_samples_functional.
+// IMPORTANT - if you change this configuration, then please visit /index.php/spatial_index_builder/generate_scripts
+// and run the scripts provided to ensure the required indexation columns are created.
+// IMPORTANT - the location ID foreign keys added to the cache tables are populated globally and are not affected
+// by the settings in $config['survey_restrictions'].
+$config['unique']=array(
+  'Vice County'
+);

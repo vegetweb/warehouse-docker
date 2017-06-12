@@ -1,5 +1,10 @@
 # warehouse-docker
 Docker image of the indicia warehouse
+## Info
+
+This contains a blank indicia warehouse - like its just after installing.
+
+The passwort for the user `admin` is set to `adminadmin`.
 
 ## Instructions
 Build with:

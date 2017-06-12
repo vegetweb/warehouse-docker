@@ -17,17 +17,18 @@ COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
 RUN mkdir /var/www/html/indicia
 RUN chown www-data:www-data /var/www/html/indicia
+
+COPY dump-1.32.0.sql dump-1.32.0.sql
+
 USER www-data
 
-ADD warehouse-1.28.0-complete.zip /var/www/html/indicia
-RUN cd /var/www/html/indicia && unzip warehouse-1.28.0-complete.zip
-COPY database.php /var/www/html/indicia/application/config/database.php
-COPY config.php /var/www/html/indicia/application/config/config.php
+ADD 1.32.0 /
 
 USER root
 RUN /indicia_setup.sh
 USER postgres
 
+RUN echo $HOME
 RUN    /etc/init.d/postgresql start &&\
     /postgres_setup.sh 
 
