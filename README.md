@@ -8,4 +8,4 @@ Build with:
 
 Run with: 
 
-`sudo docker run  -p 80:80 -p 5432 -t -i indicia-warehousesudo docker run  -p 80:80 -p 5432 -t -i indicia-warehouse`
+`sudo docker run  -p 80:80 -p 5432 -t -i indicia-warehouse`
