@@ -11,10 +11,7 @@ The image exposes two ports: `80` to access indicia `5432` to access the postgre
 The database users are: `indicia_user` with the password `indicia_user_pass` and `indicia_report_user` with the password `indicia_report_user_pass`.
 
 ## Instructions
-Build with:
-
-`sudo docker build -t indicia-warehouse .`
 
 Run with: 
 
-`sudo docker run  -p 80:80 -p 5432 -t -i indicia-warehouse`
+`sudo docker run  -p 80:80 -p 5432:5432 infinitenature/warehouse-docker`
