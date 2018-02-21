@@ -39,6 +39,10 @@ RUN echo "host all  all    0.0.0.0/0  md5" >> /etc/postgresql/9.5/main/pg_hba.co
 # And add ``listen_addresses`` to ``/etc/postgresql/9.5/main/postgresql.conf``
 RUN echo "listen_addresses='*'" >> /etc/postgresql/9.5/main/postgresql.conf
 
+# Resize shared_buffers
+
+RUN sed -i -e 's/shared_buffers = 128MB/shared_buffers = 512MB/g' /etc/postgresql/9.5/main/postgresql.conf
+ 
 # Expose the PostgreSQL port
 EXPOSE 80 5432
 # Set the default command to run when starting the container
