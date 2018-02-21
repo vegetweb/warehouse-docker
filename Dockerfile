@@ -45,8 +45,7 @@ RUN sed -i -e 's/shared_buffers = 128MB/shared_buffers = 512MB/g' /etc/postgresq
  
 # Expose the PostgreSQL port
 EXPOSE 80 5432
-# Set the default command to run when starting the container
-#CMD ["/usr/lib/postgresql/9.5/bin/postgres", "-D", "/var/lib/postgresql/9.5/main", "-c", "config_file=/etc/postgresql/9.5/main/postgresql.conf"]
+
 USER root
 
 CMD ["/usr/bin/supervisord"]
